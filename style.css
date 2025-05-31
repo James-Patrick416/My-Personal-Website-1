@@ -1,0 +1,170 @@
+/* Global & Background */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  padding-top: 100px;
+  background: linear-gradient(-45deg, #00008B, #4B0082, #1E90FF, #6A5ACD);
+  background-size: 400% 400%;
+  animation: gradientFlow 20s ease infinite, fadeIn 2s ease;
+  margin: 0;
+  color: white;
+}
+
+@keyframes gradientFlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.03); }
+}
+
+/* Header */
+h1 {
+  font-size: 36px;
+  margin-bottom: 30px;
+  animation: fadeIn 3s ease;
+}
+
+/* Button */
+button {
+  padding: 12px 24px;
+  font-size: 18px;
+  background-color: #ffffff;
+  color: #00008B;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  animation: fadeIn 4s ease, pulse 5s ease-in-out infinite;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+  background-color: #f2f2f2;
+  transform: scale(1.05);
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+/* Hidden/Visible */
+.hidden {
+  opacity: 0;
+  transition: opacity 2s ease;
+}
+
+.visible {
+  opacity: 1;
+}
+
+/* Typing Text */
+#intro-container {
+  font-size: 18px;
+  margin-top: 40px;
+  min-height: 150px;
+  padding: 0 20px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+  letter-spacing: 0.3px;
+}
+
+#cursor {
+  display: inline-block;
+  margin-left: 4px;
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+/* Continue Link */
+#continue-link {
+  display: inline-block;
+  margin-top: 40px;
+  font-size: 18px;
+  text-decoration: none;
+  color: gold;
+  padding: 10px 20px;
+  border: 2px solid gold;
+  border-radius: 8px;
+  transition: background-color 0.3s, transform 0.2s;
+  opacity: 0;
+}
+
+#continue-link.visible {
+  opacity: 1;
+  animation: fadeIn 2s ease;
+}
+
+#continue-link:hover {
+  background-color: gold;
+  color: #000;
+  transform: scale(1.05);
+}
+
+/* Sections */
+section {
+  padding: 80px 20px;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-top: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+#skills ul, #portfolio ul {
+  list-style: none;
+  padding: 0;
+}
+
+#skills li, #portfolio li {
+  margin: 8px 0;
+}
+
+a {
+  color: gold;
+}
+
+/* Quote Container */
+#quote-container {
+  font-size: 24px;
+  margin-top: 20px;
+  font-family: "Courier New", Courier, monospace;
+  color: #FFD700;
+  padding: 0 20px;
+  line-height: 1.8;
+}
+
+#quote-cursor {
+  display: inline-block;
+  margin-left: 4px;
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+.about-container {
+    display: flex; /* Aligns items in a row */
+    align-items: center; /* Centers items vertically */
+    gap: 15px; /* Adds space between text and image */
+}
+
+.about-container img {
+    border-radius: 0; /* Keeps it rectangular */
+    width: 200px; /* Adjust width as needed */
+    height: auto; /* Maintain aspect ratio */
+}

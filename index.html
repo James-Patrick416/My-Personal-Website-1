@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Website</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Welcome to My Website</h1>
+  <button id="enter-btn" onclick="playMusic()">Enter Site</button>
+  
+  <div id="quote-container" class="hidden">
+    <span id="typed-quote"></span><span id="quote-cursor">|</span>
+  </div>
+
+  <p id="intro-container" class="hidden">
+    <span id="typed-text"></span><span id="cursor">|</span>
+  </p>
+
+  <a href="#next-section" id="continue-link" class="hidden">→ Continue</a>
+
+  <button id="audio-toggle" class="hidden" onclick="toggleAudio()">🔊 Mute</button>
+
+  <audio id="bg-music" loop>
+    <source src="smalljoys.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <section id="next-section">
+    <h2>About Me</h2>
+    <div class="about-container">
+    <img src="Cute Catt.jpg" alt="Cute cat" width="200" height="200">
+    <p>Hi again,i am James Patrick a software developer, 17 years of age lively young man with a dream of creating apps,games and websites , my hobbies are drawing dancing singing listening to music</p>
+    </div>
+  </section>
+
+  <section id="skills">
+    <h2>Skills</h2>
+    <ul>
+      <li>HTML & CSS</li>
+      <li>JavaScript</li>
+      <li>React</li>
+      <li>Node.js</li>
+      <li>Git & GitHub</li>
+    </ul>
+  </section>
+
+  <section id="portfolio">
+    <h2>Portfolio</h2>
+    <p>My Projects.</p>
+    <ul>
+      <li><a href="#">Personal Website</a></li>
+      <li><a href="#">Not Yet</a></li>
+      <li><a href="#">Not Yet</a></li>
+    </ul>
+  </section>
+
+  <section id="contact">
+    <h2>Contact</h2>
+    <p>Email: jp1252211@gmail.com</p>
+    <p>Instagram <a href="#">@mad_viln</a></p>
+  </section>
+
+  <script>
+    const fullText = "Hi there, my name is James Patrick. I am a fullstack software developer, currently working on my personal website. Coding is really fun and I'm glad you have joined me in this journey.";
+
+    function playMusic() {
+      document.getElementById("bg-music").play();
+      document.getElementById("enter-btn").style.display = "none";
+
+      const typedText = document.getElementById("typed-text");
+      let index = 0;
+      const speed = 65;
+
+      function type() {
+        if (index < fullText.length) {
+          typedText.textContent += fullText.charAt(index);
+          index++;
+          setTimeout(type, speed);
+        } else {
+          document.getElementById("continue-link").classList.remove("hidden");
+          document.getElementById("continue-link").classList.add("visible");
+        }
+      }
+
+      // Show the container and start typing
+      document.getElementById("intro-container").classList.remove("hidden");
+      document.getElementById("intro-container").classList.add("visible");
+      type();
+    }
+
+    function toggleAudio() {
+      const audio = document.getElementById("bg-music");
+      const button = document.getElementById("audio-toggle");
+
+      if (audio.paused) {
+        audio.play();
+        button.textContent = "🔊 Mute";
+      } else {
+        audio.pause();
+        button.textContent = "🔈 Unmute";
+      }
+    }
+
+    const quotes = [
+      "Coding is a journey, not a destination.",
+      "Believe in yourself, code your dreams.",
+      "Every bug is an opportunity to learn.",
+      "The best way to predict the future is to create it.",
+      "Strive for progress, not perfection."
+    ];
+
+    let quoteIndex = 0;
+    let quoteText = "";
+    let quoteSpeed = 100;
+
+    function typeQuote() {
+      const typedQuote = document.getElementById("typed-quote");
+      const currentQuote = quotes[quoteIndex];
+      
+      if (quoteText.length < currentQuote.length) {
+        quoteText += currentQuote.charAt(quoteText.length);
+        typedQuote.textContent = quoteText;
+        setTimeout(typeQuote, quoteSpeed);
+      } else {
+        setTimeout(function () {
+          quoteText = "";
+          quoteIndex = (quoteIndex + 1) % quotes.length;
+          setTimeout(typeQuote, 1000); // Delay before starting the next quote
+        }, 2000);
+      }
+    }
+
+    function showQuote() {
+      document.getElementById("quote-container").classList.remove("hidden");
+      document.getElementById("quote-container").classList.add("visible");
+      typeQuote();
+    }
+
+    window.onload = () => {
+      setTimeout(showQuote, 2000); // 2-second delay to start showing the quote
+    };
+  </script>
+</body>
+</html>
