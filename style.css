@@ -168,3 +168,18 @@ a {
     width: 200px; /* Adjust width as needed */
     height: auto; /* Maintain aspect ratio */
 }
+
+#contact i {
+  margin-right: 6px;
+  font-size: 18px;
+  vertical-align: middle;
+}
+
+#contact a {
+  text-decoration: none;
+  color: #E1306C;
+}
+
+#contact a:hover {
+  text-decoration: underline;
+}
